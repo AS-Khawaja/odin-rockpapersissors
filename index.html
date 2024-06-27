@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+    function getRandomIntInclusive(min, max) {
+        const minCeiled = Math.ceil(min);
+        const maxFloored = Math.floor(max);
+        return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); 
+    }
+
+    function getcomputerchoice()
+    {
+        return getRandomIntInclusive(0,2);
+    }
+
+    function gethumanchoice()
+    {
+        let sign = prompt("Your Turn:");
+
+        if (sign.toLowerCase() === "rock") {
+            return 0;
+        }
+        else if (sign.toLowerCase() === "paper") {
+            return 1;
+        }
+        else if (sign.toLowerCase() === "sissors") {
+            return 2;
+        }
+        else {
+            alert("Invalid Input");
+            return gethumanchoice();
+        }
+    }
+
+    let humanscore=0;
+    let computerscore=0;
+
+    function playRound(humanChoice, computerChoice) {
+        if(humanChoice==0&&computerChoice==1)
+        {
+            computerscore++;
+        }
+        else if(humanChoice==0&&computerChoice==2)
+        {
+            humanscore++;
+        }
+        else if(humanChoice==1&&computerChoice==0)
+        {
+            humanscore++;
+        }
+        else if(humanChoice==2&&computerChoice==0)
+        {
+            computerscore++;
+        }
+        else if(humanChoice==1&&computerChoice==2)
+        {
+            computerscore++;
+        }
+        else if(humanChoice==2&&computerChoice==1)
+        {
+            humanscore++;
+        }
+        
+    }
+
+
+    function playgame()
+    {
+        for(let i=0;i<5;i++)
+        {
+            const humanSelection = gethumanchoice();
+            const computerSelection = getcomputerchoice();
+            playRound(humanSelection, computerSelection);
+        }
+
+        if(humanscore>computerscore)
+        {
+            alert("You Won");
+        }
+        else if(humanscore<computerscore)
+        {
+            alert("You Lost");
+        }
+        else{
+            alert("It's a Tie");
+        }
+
+    }
+
+    playgame();
+    
+
+
+
+
+  </script>
+</body>
+</html>
